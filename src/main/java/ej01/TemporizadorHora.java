@@ -122,7 +122,23 @@ public class TemporizadorHora extends JFrame {
             ventanaAlarma.setVisible(true);
         });
     }
-
+// Método para reproducir el sonido de la alarma
+    private void iniciarAlarma() {
+        try {
+            InputStream audioStream = getClass().getResourceAsStream("/alarma.wav");
+            if (audioStream != null) {
+                AudioInputStream ais = AudioSystem.getAudioInputStream(audioStream);
+                clipAlarma = AudioSystem.getClip();
+                clipAlarma.open(ais);
+                clipAlarma.loop(Clip.LOOP_CONTINUOUSLY); // Repetir el sonido de la alarma continuamente
+            } else {
+                JOptionPane.showMessageDialog(null, "No se encontró el archivo de sonido.");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al reproducir el sonido de la alarma.");
+        }
+    }
 
      public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TemporizadorHora());
