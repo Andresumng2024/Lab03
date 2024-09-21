@@ -139,6 +139,26 @@ public class TemporizadorHora extends JFrame {
             JOptionPane.showMessageDialog(null, "Error al reproducir el sonido de la alarma.");
         }
     }
+     // Método para detener el sonido de la alarma
+    private void detenerSonidoAlarma() {
+        if (clipAlarma != null && clipAlarma.isRunning()) {
+            clipAlarma.stop();  // Detiene el sonido de la alarma
+            clipAlarma.close(); // Libera recursos
+        }
+    }
+
+    // Cancelar la alarma y resetear la ventana principal
+    private void cancelarAlarma() {
+        if (tareaAlarma != null) {
+            tareaAlarma.cancel(); // Cancelar la tarea de la alarma
+        }
+        detenerSonidoAlarma();
+        labelAlarmaConfigurada.setText("");
+        textMinutos.setEnabled(true);
+        botonConfigurarAlarma.setEnabled(true);
+        botonCancelarAlarma.setEnabled(false);
+    }
+
 
      public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TemporizadorHora());
