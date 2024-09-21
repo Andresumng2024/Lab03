@@ -21,4 +21,25 @@ public class TemporizadorHora extends JFrame {
     private Clip clipAlarma; // Declarar clipAlarma a nivel de clase
 
     
+
+ public TemporizadorHora() {
+        super("Temporizador y Alarma");
+        setLayout(new FlowLayout());
+
+        // Crear los componentes
+        labelHora = new JLabel("Hora actual: ");
+        labelAlarmaConfigurada = new JLabel("");
+        textMinutos = new JTextField(5);
+        botonConfigurarAlarma = new JButton("Configurar Alarma");
+        botonCancelarAlarma = new JButton("Cancelar Alarma");
+        botonCancelarAlarma.setEnabled(false); // Desactivar el botón al inicio
+
+        // Agregar componentes a la ventana
+        add(labelHora);
+        add(new JLabel("Minutos para la alarma:"));
+        add(textMinutos);
+        add(botonConfigurarAlarma);
+        add(botonCancelarAlarma);
+        add(labelAlarmaConfigurada);
+ }
 }
