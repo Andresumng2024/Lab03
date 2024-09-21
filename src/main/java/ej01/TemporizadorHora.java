@@ -158,7 +158,13 @@ public class TemporizadorHora extends JFrame {
         botonConfigurarAlarma.setEnabled(true);
         botonCancelarAlarma.setEnabled(false);
     }
-
+  // Resetear la ventana principal después de detener la alarma
+    private void resetearVentanaPrincipal() {
+        labelAlarmaConfigurada.setText("");
+        textMinutos.setEnabled(true);
+        botonConfigurarAlarma.setEnabled(true);
+        botonCancelarAlarma.setEnabled(false);
+    }
 
      public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TemporizadorHora());
