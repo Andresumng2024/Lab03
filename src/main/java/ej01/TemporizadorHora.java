@@ -83,8 +83,47 @@ public class TemporizadorHora extends JFrame {
             }
         });
 
-    
-}
+     // Acción del botón para cancelar la alarma
+        botonCancelarAlarma.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cancelarAlarma();
+            }
+        });
+
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    // Mostrar ventana de alarma
+    private void mostrarVentanaAlarma() {
+        SwingUtilities.invokeLater(() -> {
+            JFrame ventanaAlarma = new JFrame("Alarma");
+            ventanaAlarma.setLayout(new FlowLayout());
+
+            JLabel mensajeAlarma = new JLabel("¡La alarma suena!");
+            JButton botonDetenerAlarma = new JButton("Detener Alarma");
+
+            ventanaAlarma.add(mensajeAlarma);
+            ventanaAlarma.add(botonDetenerAlarma);
+
+            botonDetenerAlarma.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    detenerSonidoAlarma();
+                    ventanaAlarma.dispose();
+                    resetearVentanaPrincipal();
+                }
+            });
+
+            ventanaAlarma.setSize(200, 100);
+            ventanaAlarma.setLocationRelativeTo(null);
+            ventanaAlarma.setVisible(true);
+        });
+    }
+
+
      public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new TemporizadorHora());
     }
