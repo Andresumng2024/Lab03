@@ -20,9 +20,7 @@ public class TemporizadorHora extends JFrame {
     private TimerTask tareaAlarma;
     private Clip clipAlarma; // Declarar clipAlarma a nivel de clase
 
-    
-
- public TemporizadorHora() {
+    public TemporizadorHora() {
         super("Temporizador y Alarma");
         setLayout(new FlowLayout());
 
@@ -41,5 +39,11 @@ public class TemporizadorHora extends JFrame {
         add(botonConfigurarAlarma);
         add(botonCancelarAlarma);
         add(labelAlarmaConfigurada);
- }
+    }
+    
+    
+    
+       public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new TemporizadorHora());
+    }
 }
